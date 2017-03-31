@@ -1,5 +1,7 @@
 defmodule RemoteRetro.RetroChannelTest do
-  use RemoteRetro.ChannelCase, async: true
+  use RemoteRetro.ChannelCase, async: false
+  use Bamboo.Test, shared: true
+
   alias RemoteRetro.RetroChannel
   alias RemoteRetro.Repo
   alias RemoteRetro.Idea
@@ -82,6 +84,15 @@ defmodule RemoteRetro.RetroChannelTest do
       push(socket, "show_action_item", %{show_action_item: false})
 
       assert_broadcast("set_show_action_item", %{ "show_action_item" => false})
+    end
+  end
+
+  describe "pushing a send_action_items_email to the socket" do
+    setup [:join_the_retro_channel]
+    test "results in the push of a email_send_status event back to the client", %{socket: socket} do
+      push(socket, "send_action_items_email", %{})
+
+      assert_push("email_send_status", %{"success" => _})
     end
   end
 
