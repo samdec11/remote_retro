@@ -2,7 +2,7 @@ defmodule RemoteRetro.RetroChannelTest do
   use RemoteRetro.ChannelCase, async: false
   use Bamboo.Test, shared: true
 
-  alias RemoteRetro.{RetroChannel, Repo, Idea, Presence}
+  alias RemoteRetro.{RetroChannel, Repo, Idea, Presence, Retro}
 
   @mock_user Application.get_env(:remote_retro, :mock_user)
 
@@ -80,6 +80,14 @@ defmodule RemoteRetro.RetroChannelTest do
       push(socket, "proceed_to_next_stage", %{stage: 0})
 
       assert_broadcast("proceed_to_next_stage", %{"stage" => 0})
+    end
+
+    test "updates the retro stage to the value from the pushed event", %{socket: socket, retro: retro} do
+      push(socket, "proceed_to_next_stage", %{stage: "0"})
+
+      assert_broadcast("proceed_to_next_stage", %{"stage" => "0"})
+      persisted_stage = Repo.get(Retro, retro.id).stage
+      assert persisted_stage == "0"
     end
   end
 
