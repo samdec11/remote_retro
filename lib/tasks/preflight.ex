@@ -27,7 +27,7 @@ defmodule Mix.Tasks.Preflight do
   defp check_hex_version do
     required_version_num = "0.16.0"
 
-    { hex_version_output, _ } = System.cmd("mix", ["hex", "--version"])
+    {hex_version_output, _} = System.cmd("mix", ["hex", "--version"])
     if !String.contains?(hex_version_output, required_version_num) do
       IO.puts """
 

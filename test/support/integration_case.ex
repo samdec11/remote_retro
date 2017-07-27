@@ -1,8 +1,7 @@
 defmodule RemoteRetro.IntegrationCase do
 
   use ExUnit.CaseTemplate
-  alias RemoteRetro.Repo
-  alias RemoteRetro.Retro
+  alias RemoteRetro.{Repo, Retro}
   import RemoteRetro.TestHelpers
 
   use Wallaby.DSL
