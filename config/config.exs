@@ -7,25 +7,25 @@ use Mix.Config
 
 # General application configuration
 config :remote_retro,
-  ecto_repos: [RemoteRetro.Repo]
+  ecto_repos: [RemoteRetroWeb.Repo]
 
 # Configures the endpoint
-config :remote_retro, RemoteRetro.Endpoint,
+config :remote_retro, RemoteRetroWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "O3MLJ1Bu2p3iEKTRu9DsKQj7ahKyfBfvTxQfW5HehdWt/NtN3ffL1LsAStFlg8Y06",
-  render_errors: [view: RemoteRetro.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: RemoteRetro.PubSub,
+  render_errors: [view: RemoteRetroWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: RemoteRetroWeb.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Email API
-config :remote_retro, RemoteRetro.Mailer, adapter: Bamboo.SendgridAdapter, api_key: System.get_env("SENDGRID_API_KEY")
+config :remote_retro, RemoteRetroWeb.Mailer, adapter: Bamboo.SendgridAdapter, api_key: System.get_env("SENDGRID_API_KEY")
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :remote_retro, ecto_repos: [RemoteRetro.Repo]
+config :remote_retro, ecto_repos: [RemoteRetroWeb.Repo]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

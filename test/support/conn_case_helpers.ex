@@ -1,4 +1,4 @@
-defmodule RemoteRetro.ConnCase.Helpers do
+defmodule RemoteRetroWeb.ConnCase.Helpers do
   use Phoenix.ConnTest
 
   @endpoint RemoteRetro.Endpoint

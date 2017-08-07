@@ -1,4 +1,4 @@
-defmodule RemoteRetro.ChannelCase do
+defmodule RemoteRetroWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,23 +20,23 @@ defmodule RemoteRetro.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias RemoteRetro.Repo
+      alias RemoteRetroWeb.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import RemoteRetro.TestHelpers
+      import RemoteRetroWeb.TestHelpers
 
       # The default endpoint for testing
-      @endpoint RemoteRetro.Endpoint
+      @endpoint RemoteRetroWeb.Endpoint
     end
   end
 
   setup _tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RemoteRetro.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RemoteRetroWeb.Repo)
 
-    Ecto.Adapters.SQL.Sandbox.mode(RemoteRetro.Repo, {:shared, self()})
+    Ecto.Adapters.SQL.Sandbox.mode(RemoteRetroWeb.Repo, {:shared, self()})
 
-    retro = RemoteRetro.Repo.insert!(%RemoteRetro.Retro{})
+    retro = RemoteRetroWeb.Repo.insert!(%RemoteRetroWeb.Retro{})
     { :ok, retro: retro }
   end
 end

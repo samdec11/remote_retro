@@ -1,4 +1,4 @@
-defmodule RemoteRetro.ConnCase do
+defmodule RemoteRetroWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,24 +20,24 @@ defmodule RemoteRetro.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias RemoteRetro.Repo
+      alias RemoteRetroWeb.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import RemoteRetro.Router.Helpers
-      import RemoteRetro.ConnCase.Helpers
+      import RemoteRetroWeb.Router.Helpers
+      import RemoteRetroWeb.ConnCase.Helpers
 
       # The default endpoint for testing
-      @endpoint RemoteRetro.Endpoint
+      @endpoint RemoteRetroWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RemoteRetro.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RemoteRetroWeb.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(RemoteRetro.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(RemoteRetroWeb.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

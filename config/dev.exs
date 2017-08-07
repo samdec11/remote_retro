@@ -6,21 +6,21 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :remote_retro, RemoteRetro.Endpoint,
+config :remote_retro, RemoteRetroWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [npm: ["run", "watch", cd: Path.expand("../", __DIR__)]]
+  watchers: [npm: ["run", "watch", cd: Path.expand("../assets", __DIR__)]]
 
 # Watch static and templates for browser reloading.
-config :remote_retro, RemoteRetro.Endpoint,
+config :remote_retro, RemoteRetroWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex)$}
+      ~r{lib/my_app_web/views/.*(ex)$},
+      ~r{lib/my_app_web/templates/.*(eex)$}
     ]
   ]
 
@@ -32,7 +32,7 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :remote_retro, RemoteRetro.Repo,
+config :remote_retro, RemoteRetroWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
@@ -40,7 +40,7 @@ config :remote_retro, RemoteRetro.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :remote_retro, RemoteRetro.Mailer, adapter: Bamboo.LocalAdapter
+config :remote_retro, RemoteRetroWeb.Mailer, adapter: Bamboo.LocalAdapter
 
 config :remote_retro, :oauth_client, OAuth2.Client
 

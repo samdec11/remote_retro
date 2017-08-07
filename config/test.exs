@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :remote_retro, RemoteRetro.Endpoint,
+config :remote_retro, RemoteRetroWeb.Endpoint,
   http: [port: 4001],
   server: true
 
@@ -14,10 +14,10 @@ config :bamboo, :refute_timeout, 10
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-config :remote_retro, RemoteRetro.Mailer, adapter: Bamboo.TestAdapter
+config :remote_retro, RemoteRetroWeb.Mailer, adapter: Bamboo.TestAdapter
 
 # Configure your database
-config :remote_retro, RemoteRetro.Repo,
+config :remote_retro, RemoteRetroWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
@@ -26,7 +26,7 @@ config :remote_retro, RemoteRetro.Repo,
   ownership_timeout: 25_000,
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :remote_retro, :oauth_client, RemoteRetro.OAuth.Client.InMemory
+config :remote_retro, :oauth_client, RemoteRetroWeb.OAuth.Client.InMemory
 config :remote_retro, :mock_user, %{
   "email" => "mistertestuser@gmail.com",
   "email_verified" => "true", "family_name" => "Vander Hoop",

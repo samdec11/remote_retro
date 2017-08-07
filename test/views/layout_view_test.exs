@@ -1,3 +1,3 @@
 defmodule RemoteRetro.LayoutViewTest do
-  use RemoteRetro.ConnCase, async: true
+  use RemoteRetroWeb.ConnCase, async: true
 end

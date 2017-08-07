@@ -1,5 +1,5 @@
 defmodule RemoteRetro.RetroChannelTest do
-  use RemoteRetro.ChannelCase, async: false
+  use RemoteRetroWeb.ChannelCase, async: false
   use Bamboo.Test, shared: true
 
   alias RemoteRetro.{RetroChannel, Repo, Idea, Presence, Retro}

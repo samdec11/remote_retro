@@ -1,0 +1,22 @@
+defmodule RemoteRetroWeb.Idea do
+  use RemoteRetroWeb.Web, :model
+
+  @derive {Poison.Encoder, except: [:__meta__]}
+  schema "ideas" do
+    field :category, :string
+    field :body, :string
+
+    belongs_to :retro, RemoteRetroWeb.Retro, type: Ecto.UUID
+    belongs_to :user, RemoteRetroWeb.User
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @required_fields [:category, :body, :retro_id, :user_id]
+
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, @required_fields)
+    |> validate_required(@required_fields)
+  end
+end
